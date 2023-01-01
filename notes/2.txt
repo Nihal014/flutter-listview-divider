@@ -1,0 +1,48 @@
+to give a divider wrap Text with a column
+
+import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter/src/widgets/framework.dart';
+
+void main(List<String> args) {
+  runApp(myapp());//function to run the app,passing myapp-(myapp class runs when app runs)
+}
+
+class myapp extends StatelessWidget {
+  const myapp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: homescreen(),
+      theme: ThemeData(primarySwatch: Colors.blue),
+    );
+  }
+}
+
+class homescreen extends StatelessWidget {
+  const homescreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.red ,//red bg
+        appBar: AppBar(
+          title: Text("creating a list"),
+        ),
+        body: SafeArea(
+            child: ListView(//give column instead of listview for no scroll
+          children: List.generate(
+            100,
+            (index) {
+              return Column(
+                children: [
+                  Text("text $index"),
+                  Divider(),
+                ],
+              );
+            },
+          ),
+        )));
+  }
+}
